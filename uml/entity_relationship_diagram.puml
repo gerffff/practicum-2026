@@ -1,0 +1,55 @@
+@startuml EntityRelationshipDiagram
+
+' Сущности
+entity User {
+    *id (PK)
+    *email (UK)
+    *hashed_password
+    is_admin
+    created_at
+}
+
+entity Book {
+    *id (PK)
+    *title
+    description
+    published_year
+    created_at
+}
+
+entity Author {
+    *id (PK)
+    *name
+}
+
+entity Genre {
+    *id (PK)
+    *name
+}
+
+entity Favorite {
+    *id (PK)
+    *user_id (FK)
+    *book_id (FK)
+    created_at
+}
+
+entity BookAuthor {
+    *book_id (FK)
+    *author_id (FK)
+}
+
+entity BookGenre {
+    *book_id (FK)
+    *genre_id (FK)
+}
+
+' Связи
+User ||--o{ Favorite : has
+Book ||--o{ Favorite : belongs_to
+Book ||--|{ BookAuthor : has
+Author ||--|{ BookAuthor : writes
+Book ||--|{ BookGenre : has
+Genre ||--|{ BookGenre : categorizes
+
+@enduml

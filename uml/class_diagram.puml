@@ -1,0 +1,67 @@
+@startuml ClassDiagram
+
+class User {
+    -id: int
+    -email: str
+    -hashed_password: str
+    -is_admin: bool
+    -created_at: datetime
+    +__init__(email, password, is_admin=False)
+    +verify_password(password): bool
+    +set_password(password): None
+}
+
+class Book {
+    -id: int
+    -title: str
+    -description: str
+    -published_year: int
+    -created_at: datetime
+    +__init__(title, description=None, published_year=None)
+    +add_author(author): None
+    +add_genre(genre): None
+    +get_authors(): List[Author]
+    +get_genres(): List[Genre]
+}
+
+class Author {
+    -id: int
+    -name: str
+    +__init__(name)
+    +get_books(): List[Book]
+}
+
+class Genre {
+    -id: int
+    -name: str
+    +__init__(name)
+    +get_books(): List[Book]
+}
+
+class Favorite {
+    -id: int
+    -user_id: int
+    -book_id: int
+    -created_at: datetime
+    +__init__(user_id, book_id)
+}
+
+class BookAuthor {
+    -book_id: int
+    -author_id: int
+    +__init__(book_id, author_id)
+}
+
+class BookGenre {
+    -book_id: int
+    -genre_id: int
+    +__init__(book_id, genre_id)
+}
+
+' Отношения
+User "1" -- "*" Favorite : has
+Book "1" -- "*" Favorite : belongs_to
+Book "*" -- "*" Author : many-to-many
+Book "*" -- "*" Genre : many-to-many
+
+@enduml

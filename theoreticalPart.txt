@@ -1,0 +1,57 @@
+1. 1
+2. 2
+3. 2
+4. 2
+5. 3
+6. 1
+7. 2
+8. 1
+9. 1
+10. 1
+11. 6
+12. 3
+13. 2
+14. 1
+15. 3
+16. 
+SELECT 
+    a.id AS article_id,
+    a.title AS article_title,
+    a.body AS article_body,
+    c.id AS comment_id,
+    c.title AS comment_title,
+    c.body AS comment_body,
+    c.parent_id AS comment_parent_id
+FROM articles a
+JOIN comments c ON c.article_id = a.id
+WHERE a.id = 101;
+
+17.
+SELECT 
+    u.id AS user_id,
+    u.email,
+    p.first_name,
+    p.last_name,
+    p.photo_link,
+    r.title AS role_title
+FROM users u
+LEFT JOIN profiles p ON p.user_id = u.id
+LEFT JOIN users_roles ur ON ur.user_id = u.id
+LEFT JOIN roles r ON r.id = ur.role_id
+WHERE u.id = 256;
+
+18. 
+INSERT INTO users_roles (user_id, role_id)
+VALUES (225, 8);
+
+19. 
+UPDATE profiles
+SET photo_link = 'new_photo_link'
+WHERE user_id = 67;
+
+20. 
+DELETE FROM users_roles WHERE user_id = 78;
+DELETE FROM profiles WHERE user_id = 78;
+DELETE FROM comments WHERE author_id = 78;
+DELETE FROM articles WHERE author_id = 78;
+DELETE FROM users WHERE id = 78;

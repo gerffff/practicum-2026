@@ -25,10 +25,15 @@ alembic upgrade head
 ```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
+<img width="841" height="147" alt="image" src="https://github.com/user-attachments/assets/1f093c55-d3cf-49d1-9460-0b5805556d59" /><br><br><br>
 
-5. **Документація API:**
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
+
+5. **Документація API за допомогою Swagger:**
+
+`http://localhost:8000/docs`
+<br><br>
+<img width="1344" height="667" alt="image" src="https://github.com/user-attachments/assets/e16ad3aa-4586-4c5c-b499-dde12601e352" /><br><br>
+
 
 ## Дані для входу
 
@@ -51,21 +56,18 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```bash
 # Показати всіх користувачів
 python manage_user_role.py list
+```
+<img width="609" height="246" alt="image" src="https://github.com/user-attachments/assets/09ba4a98-d277-4795-a99e-374fbde4009c" />
+<br><br>
 
+```bash
 # Змінити роль
 python manage_user_role.py user@example.com admin
 python manage_user_role.py user@example.com client
 ```
 
-## Тестові дані
+<img width="602" height="76" alt="image" src="https://github.com/user-attachments/assets/8e8e031c-8b4c-4101-a5c7-7940958da798" /><br><br>
 
-Для додавання тестових даних виконайте:
-
-```bash
-python add_test_data.py
-```
-
-Або використовуйте SQL скрипт `insert_test_data.sql` в pgAdmin.
 
 ## Структура проєкту
 
@@ -73,34 +75,32 @@ python add_test_data.py
 online_library/
 ├── app/
 │   ├── __init__.py
-│   ├── main.py              # Основне додаток FastAPI
-│   ├── database.py           # Налаштування бази даних
-│   ├── auth.py              # Аутентифікація та JWT
-│   ├── models/              # SQLAlchemy моделі
+│   ├── main.py              
+│   ├── database.py          
+│   ├── auth.py            
+│   ├── models/              
 │   │   ├── __init__.py
 │   │   ├── user.py
 │   │   ├── book.py
 │   │   ├── author.py
 │   │   ├── genre.py
 │   │   └── favorite.py
-│   ├── schemas/             # Pydantic схеми
+│   ├── schemas/           
 │   │   ├── __init__.py
 │   │   ├── user.py
 │   │   ├── book.py
 │   │   ├── favorite.py
 │   │   └── token.py
-│   └── routers/             # API роутери
+│   └── routers/           
 │       ├── __init__.py
 │       ├── auth.py
 │       ├── books.py
 │       ├── favorites.py
 │       └── admin.py
-├── alembic/                # Міграції бази даних
-├── uml/                    # UML діаграми
+├── alembic/               
+├── uml/                  
 ├── requirements.txt
-├── manage_user_role.py       # Консольна команда управління ролями
-├── add_test_data.py         # Скрипт додавання тестових даних
-└── insert_test_data.sql     # SQL скрипт для pgAdmin
+└── manage_user_role.py     
 ```
 
 ## API Ендпоінти
@@ -163,7 +163,6 @@ online_library/
 Файли PlantUML знаходяться в директорії `uml/`:
 - `entity_relationship_diagram.puml` - ER діаграма
 - `class_diagram.puml` - Діаграма класів
-- `sequence_diagram.puml` - Діаграма послідовності
 
 ## Безпека
 
